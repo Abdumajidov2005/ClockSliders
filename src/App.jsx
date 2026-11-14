@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   motion,
   AnimatePresence,
@@ -22,7 +22,11 @@ import {
   Award,
 } from 'lucide-react';
 
-
+/**
+ * S'WATCH — Fossil Gen 5 Luxury Showcase
+ * 1:1 Pixel-Accurate Recreation with Framer Motion Graphics, 3D Mouse Parallax,
+ * Dynamic Color-Matched Backgrounds, Live Sweeping Watch Hands & Interactive Modals.
+ */
 
 const WATCH_MODELS = [
   {
@@ -1065,47 +1069,37 @@ export default function App() {
 
           {/* Left Typography Column: Fossil / Gen 5 / $359.00 */}
           <div className="lg:col-span-5 flex flex-col items-start justify-center pt-4 lg:pt-0 lg:pl-4 select-none">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentWatch.id}
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
+            <motion.div
+              key={currentWatch.id}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <h1
+                className="text-6xl sm:text-7xl md:text-[86px] xl:text-[98px] font-extrabold leading-[0.95] tracking-[-0.03em] text-white"
+                style={{ fontFamily: "'Plus Jakarta Sans', 'Montserrat', sans-serif" }}
               >
-                <motion.h1
-                  initial={{ opacity: 0, x: -28 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.65, delay: 0.1 }}
-                  className="text-6xl sm:text-7xl md:text-[86px] xl:text-[98px] font-extrabold leading-[0.95] tracking-[-0.03em] text-white"
-                  style={{ fontFamily: "'Plus Jakarta Sans', 'Montserrat', sans-serif" }}
-                >
-                  {currentWatch.brand}
-                </motion.h1>
+                {currentWatch.brand}
+              </h1>
 
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.65, delay: 0.18 }}
-                  className="text-6xl sm:text-7xl md:text-[86px] xl:text-[98px] font-extrabold leading-[1.02] tracking-[-0.02em] hollow-gen-text mt-1"
-                  style={{ fontFamily: "'Plus Jakarta Sans', 'Montserrat', sans-serif" }}
-                >
-                  {currentWatch.model}
-                </motion.div>
+              <div
+                className="text-6xl sm:text-7xl md:text-[86px] xl:text-[98px] font-extrabold leading-[1.02] tracking-[-0.02em] hollow-gen-text mt-1"
+                style={{ fontFamily: "'Plus Jakarta Sans', 'Montserrat', sans-serif" }}
+              >
+                {currentWatch.model}
+              </div>
 
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.55, delay: 0.28 }}
-                  className="text-2xl sm:text-[28px] md:text-[32px] font-light tracking-wide text-[#EFE6DF] mt-6 sm:mt-8"
-                >
-                  {currentWatch.formattedPrice}
-                </motion.p>
-              </motion.div>
-            </AnimatePresence>
+              <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-[#D6C3B3] mt-4">
+                {currentWatch.edition}
+              </p>
+
+              <p className="text-2xl sm:text-[28px] md:text-[32px] font-light tracking-wide text-[#EFE6DF] mt-4 sm:mt-6">
+                {currentWatch.formattedPrice}
+              </p>
+            </motion.div>
           </div>
 
-          {/* Center-Right Vertical Hero Watch Column with 3D Tilt & Floating Motion */}
+          {/* Center-Right Vertical Hero Watch Column with 3D Tilt & Reliable Switching */}
           <div
             className="lg:col-span-5 relative flex flex-col items-center justify-center h-[390px] sm:h-[470px] md:h-[560px] lg:h-full"
             style={{ perspective: 1100 }}
@@ -1119,49 +1113,31 @@ export default function App() {
               }}
               className="w-[215px] sm:w-[255px] md:w-[295px] lg:w-[310px] h-full flex items-center justify-center"
             >
-              <AnimatePresence mode="wait" custom={slideDirection}>
-                <motion.div
-                  key={currentWatch.id}
-                  custom={slideDirection}
-                  initial={{
-                    opacity: 0,
-                    y: slideDirection * 48,
-                    scale: 0.92,
-                    rotateZ: slideDirection * 3,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: [0, -7, 0],
-                    scale: 1,
-                    rotateZ: 0,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    y: slideDirection * -48,
-                    scale: 0.92,
-                    rotateZ: slideDirection * -3,
-                  }}
-                  transition={{
-                    opacity: { duration: 0.45 },
-                    scale: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
-                    rotateZ: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
-                    y: {
-                      duration: 5.5,
-                      repeat: Infinity,
-                      repeatType: 'mirror',
-                      ease: 'easeInOut',
-                    },
-                  }}
-                  className="w-full h-full flex items-center justify-center"
-                >
-                  <LuxuryWatchIllustration
-                    theme={currentWatch.theme}
-                    dayText={currentWatch.dayText}
-                    dateNum={currentWatch.dateNum}
-                    secondAngle={secondAngle}
-                  />
-                </motion.div>
-              </AnimatePresence>
+              <motion.div
+                key={currentWatch.id}
+                initial={{
+                  opacity: 0,
+                  y: slideDirection * 40,
+                  scale: 0.9,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="w-full h-full flex items-center justify-center"
+              >
+                <LuxuryWatchIllustration
+                  theme={currentWatch.theme}
+                  dayText={currentWatch.dayText}
+                  dateNum={currentWatch.dateNum}
+                  secondAngle={secondAngle}
+                />
+              </motion.div>
             </motion.div>
           </div>
 
@@ -1175,6 +1151,7 @@ export default function App() {
             <div className="relative flex flex-col items-center">
               {/* Top-Right Tiny Arrow */}
               <motion.button
+                type="button"
                 whileHover={{ x: 2, color: '#FFFFFF' }}
                 onClick={handleNextWatch}
                 aria-label="Next Watch"
@@ -1185,33 +1162,32 @@ export default function App() {
 
               {/* Rounded Square Thumbnail Preview Box */}
               <motion.button
+                type="button"
                 whileHover={{ scale: 1.05, borderColor: '#B89578' }}
                 whileTap={{ scale: 0.96 }}
                 onClick={handleNextWatch}
-                title={`Switch to ${nextWatch.edition}`}
+                title={`Keyingi soat: ${nextWatch.edition}`}
                 className="group relative w-28 h-28 xl:w-32 xl:h-32 rounded-[22px] border border-white/15 bg-[#1C120E]/90 transition-colors duration-300 flex items-center justify-center overflow-hidden shadow-xl cursor-pointer"
               >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={nextWatch.id}
-                    initial={{ opacity: 0, scale: 0.85 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.85 }}
-                    transition={{ duration: 0.35 }}
-                    className="w-16 h-28 transform group-hover:scale-110 transition-transform duration-300"
-                  >
-                    <LuxuryWatchIllustration
-                      theme={nextWatch.theme}
-                      dayText={nextWatch.dayText}
-                      dateNum={nextWatch.dateNum}
-                      isThumbnail
-                    />
-                  </motion.div>
-                </AnimatePresence>
+                <motion.div
+                  key={nextWatch.id}
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.35 }}
+                  className="w-16 h-28 transform group-hover:scale-110 transition-transform duration-300"
+                >
+                  <LuxuryWatchIllustration
+                    theme={nextWatch.theme}
+                    dayText={nextWatch.dayText}
+                    dateNum={nextWatch.dateNum}
+                    isThumbnail
+                  />
+                </motion.div>
               </motion.button>
 
               {/* Bottom-Left Tiny Arrow */}
               <motion.button
+                type="button"
                 whileHover={{ x: -2, color: '#FFFFFF' }}
                 onClick={handlePrevWatch}
                 aria-label="Previous Watch"
@@ -1270,8 +1246,23 @@ export default function App() {
             </motion.button>
           </div>
 
-          {/* Bottom-Right: Circular Outline Next Button */}
+          {/* Bottom-Right: Watch Dots Indicator + Circular Outline Next Button */}
           <div className="relative z-40 flex items-center space-x-3">
+            <div className="hidden sm:flex items-center space-x-1.5 mr-2">
+              {WATCH_MODELS.map((m, idx) => (
+                <button
+                  key={m.id}
+                  type="button"
+                  onClick={() => handleSelectWatch(idx)}
+                  title={m.edition}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${idx === activeIndex
+                    ? 'w-6 bg-white'
+                    : 'w-2 bg-white/35 hover:bg-white/70'
+                    }`}
+                />
+              ))}
+            </div>
+
             <motion.button
               type="button"
               whileHover={{ scale: 1.1, borderColor: '#FFFFFF' }}
